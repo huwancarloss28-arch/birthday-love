@@ -1,0 +1,383 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, My Love ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Poppins", Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, #ffb6c9, transparent 35%),
+        radial-gradient(circle at bottom right, #c77dff, transparent 35%),
+        linear-gradient(135deg, #ff4f81, #8e44ad);
+      position: relative;
+    }
+
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      color: white;
+      font-size: 25px;
+      opacity: .7;
+      animation: floatUp linear infinite;
+      z-index: 1;
+    }
+
+    .heart:nth-child(1) {
+      left: 8%;
+      animation-duration: 7s;
+    }
+
+    .heart:nth-child(2) {
+      left: 25%;
+      font-size: 35px;
+      animation-duration: 9s;
+      animation-delay: 2s;
+    }
+
+    .heart:nth-child(3) {
+      left: 48%;
+      animation-duration: 6s;
+      animation-delay: 1s;
+    }
+
+    .heart:nth-child(4) {
+      left: 70%;
+      font-size: 40px;
+      animation-duration: 8s;
+      animation-delay: 3s;
+    }
+
+    .heart:nth-child(5) {
+      left: 90%;
+      animation-duration: 10s;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+
+      20% {
+        opacity: .8;
+      }
+
+      100% {
+        transform: translateY(-115vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main Card */
+    .card {
+      width: 90%;
+      max-width: 650px;
+      padding: 45px 30px;
+      text-align: center;
+      color: white;
+      border-radius: 35px;
+      background: rgba(255, 255, 255, .16);
+      border: 1px solid rgba(255, 255, 255, .3);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, .3);
+      z-index: 5;
+      animation: cardIn 1.2s ease;
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(60px) scale(.85);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .top-heart {
+      font-size: 55px;
+      display: inline-block;
+      animation: beat 1.2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.2);
+      }
+    }
+
+    h1 {
+      font-size: clamp(42px, 9vw, 70px);
+      margin: 8px 0;
+      text-shadow: 0 5px 20px rgba(255, 0, 90, .45);
+    }
+
+    h2 {
+      font-size: clamp(24px, 5vw, 34px);
+      color: #ffe6ee;
+      margin-bottom: 25px;
+    }
+
+    .message {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .love-message {
+      font-size: 21px;
+      font-weight: bold;
+      margin: 25px 0;
+      color: #fff1f6;
+      text-shadow: 0 3px 10px rgba(255, 0, 100, .4);
+    }
+
+    /* Button */
+    .surprise-btn {
+      border: none;
+      outline: none;
+      padding: 16px 30px;
+      border-radius: 50px;
+      color: white;
+      background: linear-gradient(45deg, #ff174f, #ff69a4);
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 10px 30px rgba(255, 0, 80, .4);
+      transition: .3s;
+    }
+
+    .surprise-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 15px 35px rgba(255, 0, 80, .6);
+    }
+
+    .footer {
+      margin-top: 25px;
+      font-size: 13px;
+      opacity: .8;
+    }
+
+    /* Popup */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 0, 20, .8);
+      backdrop-filter: blur(10px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .popup.show {
+      display: flex;
+      animation: fade .4s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .popup-content {
+      position: relative;
+      width: 100%;
+      max-width: 430px;
+      padding: 12px;
+      border-radius: 28px;
+      background: linear-gradient(145deg, #fff, #ffe5ef);
+      box-shadow: 0 25px 80px rgba(255, 0, 100, .5);
+      animation: popupIn .5s ease;
+    }
+
+    @keyframes popupIn {
+      from {
+        transform: scale(.5) rotate(-6deg);
+      }
+
+      to {
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    .popup-content img {
+      width: 100%;
+      height: auto;
+      max-height: 65vh;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .popup-caption {
+      color: #e91e63;
+      text-align: center;
+      font-size: 19px;
+      font-weight: bold;
+      padding: 15px 5px 8px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 45px;
+      height: 45px;
+      border: 3px solid white;
+      border-radius: 50%;
+      background: #ff2d6f;
+      color: white;
+      font-size: 27px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0,0,0,.3);
+      z-index: 2;
+    }
+
+    /* Mobile */
+    @media (max-width: 500px) {
+      .card {
+        padding: 35px 20px;
+      }
+
+      .message {
+        font-size: 14px;
+      }
+
+      .love-message {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Floating Hearts -->
+  <span class="heart">❤️</span>
+  <span class="heart">💗</span>
+  <span class="heart">💕</span>
+  <span class="heart">💖</span>
+  <span class="heart">💘</span>
+
+  <!-- Birthday Card -->
+  <main class="card">
+
+    <div class="top-heart">💖</div>
+
+    <h1>Happy Birthday!</h1>
+
+    <h2>To My Love 🎂</h2>
+
+    <p class="message">
+      Happy Birthday sa pinakamamahal kong Love! 🥰
+      <br><br>
+
+      Sa espesyal na araw na ito, gusto kong ipaalala sa'yo
+      kung gaano ka kahalaga sa akin. Salamat dahil dumating ka
+      sa buhay ko at ginawa mong mas makulay, mas masaya,
+      at mas espesyal ang bawat araw. ❤️
+      <br><br>
+
+      Sana lahat ng pangarap mo ay unti-unting matupad.
+      Sana lagi kang maging masaya, at sana sa bawat birthday
+      mo ay nandito pa rin ako — kasama mo, nagmamahal sa'yo,
+      at pipiliin ka araw-araw.
+    </p>
+
+    <div class="love-message">
+      I love you today, tomorrow, and always. ❤️
+    </div>
+
+    <button class="surprise-btn" onclick="openPopup()">
+      💝 Open Your Surprise
+    </button>
+
+    <p class="footer">
+      Made with all my love, just for you. 💕
+    </p>
+
+  </main>
+
+
+  <!-- Picture Popup -->
+  <div class="popup" id="popup">
+
+    <div class="popup-content">
+
+      <button class="close-btn" onclick="closePopup()">
+        ×
+      </button>
+
+      <!-- PALITAN ANG love.jpg NG SARILING PICTURE NIYA -->
+      <img src="love.jpg" alt="My Love">
+
+      <div class="popup-caption">
+        Happy Birthday, My Love! 💖
+        <br>
+        Ikaw ang paborito kong tao. 🥰
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").classList.add("show");
+    }
+
+    function closePopup() {
+      document.getElementById("popup").classList.remove("show");
+    }
+
+    // Close kapag nag-click sa labas ng picture
+    document.getElementById("popup").addEventListener("click", function(event) {
+      if (event.target === this) {
+        closePopup();
+      }
+    });
+
+    // Close gamit ang ESC key
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closePopup();
+      }
+    });
+  </script>
+
+</body>
+</html>
+```
